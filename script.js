@@ -87,24 +87,27 @@ var upperCasedCharacters = [
   'Y',
   'Z'
 ];
-
+ alert("This is your Random Password Generator. Please press OK, and then press the red button.");
 // Function to prompt user for password options
 function getPasswordOptions() {
   
   let length = parseInt(prompt("Please choose a number of characters between 10 and 64"))
-    
+  
+   
   if (isNaN(length) === true) {
-      length = prompt("Please choose a number");
-      return;
+      length = alert("Please choose a number");
+      return length;
   }
+
   if ((length < 10) || (length >=64)){
-        alert("Your number must be between 10 and 64");
-      return;
+        length = alert("Your number must be between 10 and 64");
+      return length;
   }
     
   if ((length > 10) && (length <= 64)) {
-  alert("Let me generate a password for you");
+  alert("Please help me to generate a password for you");
   }    
+
   let hasSpecialCharacters = confirm(
     "Click ok to confirm Speacial Characters")
   
@@ -121,7 +124,7 @@ function getPasswordOptions() {
     hasNumericCharacters === false && 
     hasLowerCasedCharacters === false &&
     hasUpperCasedCharacters === false) {
-    alert ("Must select at least one character type.")
+    alert ("You must select at least one character type.")
     return;
   }
     
@@ -161,18 +164,18 @@ function generatePassword() {
   }
 
   if (options.hasLowerCasedCharacters) {
-    possibleCharacter = possibleCharacter.concat(specialCharacters);
-    guaranteedCharacter.push(getRandom(specialCharacters));
+    possibleCharacter = possibleCharacter.concat(lowerCasedCharacters);
+    guaranteedCharacter.push(getRandom(lowerCasedCharacters));
   }
 
   if (options.hasNumericCharacters) {
-    possibleCharacter = possibleCharacter.concat(specialCharacters);
-    guaranteedCharacter.push(getRandom(specialCharacters));
+    possibleCharacter = possibleCharacter.concat(numericCharacters);
+    guaranteedCharacter.push(getRandom(numericCharacters));
   }
 
   if (options.hasUpperCasedCharacters) {
-    possibleCharacter = possibleCharacter.concat(specialCharacters);
-    guaranteedCharacter.push(getRandom(specialCharacters));
+    possibleCharacter = possibleCharacter.concat(upperCasedCharacters);
+    guaranteedCharacter.push(getRandom(upperCasedCharacters));
   }
   console.log(options);
   console.log(guaranteedCharacter);
