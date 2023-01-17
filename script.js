@@ -138,7 +138,10 @@ function getPasswordOptions() {
 
 // Function for getting a random element from an array
 function getRandom(arr) {
+  let randomIndex = Math.floor(Math.random() * arr.length);
+  let randomElement = arr[randomIndex];
 
+  return randomElement;
 }
 
 // Function to generate password with user input
