@@ -90,8 +90,51 @@ var upperCasedCharacters = [
 
 // Function to prompt user for password options
 function getPasswordOptions() {
+  
+  let length = parseInt(prompt("Please choose a number of characters between 10 and 64"))
+    
+  if (isNaN(length) === true) {
+      length = prompt("Please choose a number");
+      return;
+  }
+  if ((length < 10) || (length >=64)){
+        alert("Your number must be between 10 and 64");
+      return;
+  }
+    
+  if ((length > 10) && (length <= 64)) {
+  alert("Let me generate a password for you");
+  }    
+  let hasSpecialCharacters = confirm(
+    "Click ok to confirm Speacial Characters")
+  
+  let hasNumericCharacters = confirm(
+    "Click ok to confirm Numeric Characters")
+  
+  let hasLowerCasedCharacters = confirm(
+    "Click ok to confirm Lower Case Characters")
+  
+  let hasUpperCasedCharacters = confirm(
+    "Click ok to confirm Upper Case Characters")
+   
+  if (hasSpecialCharacters === false && 
+    hasNumericCharacters === false && 
+    hasLowerCasedCharacters === false &&
+    hasUpperCasedCharacters === false) {
+    alert ("Must select at least one character type.")
+    return;
+  }
+    
+  let passwordOptions = {
+    length: length,
+    hasSpecialCharacters: hasSpecialCharacters,
+    hasUpperCasedCharacters: hasUpperCasedCharacters, 
+    hasNumericCharacters: hasNumericCharacters,
+    hasLowerCasedCharacters: hasLowerCasedCharacters
+  }
 
-}
+  return passwordOptions;
+}    
 
 // Function for getting a random element from an array
 function getRandom(arr) {
